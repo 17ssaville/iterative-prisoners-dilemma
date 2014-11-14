@@ -226,16 +226,16 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
     #
     elif player == 5:
         if getting_team_name:
-            return 'loyal vengeful'
+            return 'test 1'
         else:
             # use history, opponent_history, score, opponent_score
             # to compute your strategy
             if len(opponent_history)==0: #It's the first round: collude
-                return 'c'
+                return 'b'
             elif history[-1]=='c' and opponent_history[-1]=='b':
-                return 'b' # betray is they were severely punished last time
+                return 'c' # betray is they were severely punished last time
             else:
-                return 'c' #otherwise collude
+                return 'b' #otherwise collude
     
     
     
@@ -276,14 +276,18 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
     #
     elif player == 7:
         if getting_team_name:
-            return 'loyal vengeful'
+            return 'play fair'
         else:
             # use history, opponent_history, score, opponent_score
             # to compute your strategy
             if len(opponent_history)==0: #It's the first round: collude
                 return 'c'
-            elif history[-1]=='c' and opponent_history[-1]=='b':
-                return 'b' # betray is they were sucker last time
+            elif opponent_history[-1]=='b':
+                return 'b' 
+            elif opponent_history[-1]=='c':
+                return 'c' 
+            elif(size%5==0): #the number of rounds played is a multiple of 5
+                return 'c'
             else:
                 return 'c' #otherwise collude
 
