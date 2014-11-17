@@ -609,12 +609,17 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
     
     
     
-    
-    
-    
-    
-    
-    
+    elif player == 20:
+        if getting_team_name:
+            return "One step behind you."
+        else:
+            if len(opponent_history)==0: #It's the first round: betray
+                return 'c'
+            else:
+                if random.randint(1,100)<6 and random.randint(1,100)>=1:
+                    return 'c'
+                elif len(opponent_history)!=0:
+                    return str(opponent_history[-1])
     
     
     
