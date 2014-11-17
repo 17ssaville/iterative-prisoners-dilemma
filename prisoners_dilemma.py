@@ -16,7 +16,7 @@ Aggregated results are stored in tournament.txt
 Unpublished work (c)2013 Project Lead The Way
 CSE Project 1.3.5 Collaborating on a Project
 Draft, Do Not Distribute
-Version 8/23/2013 
+Version 11/14/2014
 '''
 
 import random
@@ -235,7 +235,7 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
             elif history[-1]=='c' and opponent_history[-1]=='b':
                 return 'b' # betray is they were severely punished last time
             else:
-                return 'c' #otherwise collude
+                return 'c' #otherwise collude 
     
     
     
@@ -478,18 +478,19 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
 
 
 
+    ######
+    ######
+    #
     elif player == 15:
         if getting_team_name:
-            return'MurrayRuhmel'
+            return 'loyal vengeful'
         else:
-            if len(opponent_history)==0:
+            if len(opponent_history)==0: #It's the first round: collude
                 return 'c'
-            elif opponent_history[0]=='c':
-                return 'b'
-                
-                
-                
-                
+            elif history[-1]=='c' and opponent_history[-1]=='b':
+                return 'b' # betray is they were severely punished last time
+            else:
+                return 'c' #otherwise collude
     
     
 
@@ -526,6 +527,28 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
     #
     elif player == 17:
         if getting_team_name:
+            return 'Warchol&Donovan'
+        else:
+            if random.random()<0.02: 
+                return 'c'
+            elif random.random()<0.07:
+                return 'c' 
+            else:
+                return 'b'
+    
+    
+
+
+
+
+
+
+
+    ######
+    ######
+    #
+    elif player == 18:
+        if getting_team_name:
             return 'loyal vengeful'
         else:
             if len(opponent_history)==0: #It's the first round: collude
@@ -534,27 +557,6 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
                 return 'b' # betray is they were severely punished last time
             else:
                 return 'c' #otherwise collude
-    
-    
-
-
-
-
-
-
-
-    elif player == 18:
-        x = random.randint(1,2)
-    if getting_team_name:
-        return 'NICK IS AWESOME'
-    else:
-        if x == 1:
-            return 'c'
-        elif x == 2:
-            return 'b'
-        else:
-            return 'b' #otherwise betray
-
     
     
 
