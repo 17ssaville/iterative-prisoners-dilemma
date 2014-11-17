@@ -527,9 +527,9 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
     #
     elif player == 17:
         if getting_team_name:
-            return '9'
+            return 'Warchol&Donovan'
         else:
-            if random.random()<0.02==0: 
+            if random.random()<0.02: 
                 return 'c'
             elif random.random()<0.07:
                 return 'c' 
