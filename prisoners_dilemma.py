@@ -416,6 +416,8 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
                 return 'c'
             elif history[-1]=='c' and opponent_history[-1]=='b':
                 return 'b' # betray is they were severely punished last time
+            elif history[-1]=='b' and opponent_history[-1]=='b':
+                return 'b' # betray if punished last time
             else:
                 return 'c' #otherwise collude
 
@@ -583,6 +585,9 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
     ######
     ######
     #
+
+ 
+ 
     elif player == 19:
         if getting_team_name:
             return 'loyal vengeful'
@@ -591,14 +596,10 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
                 return 'c'
             elif history[-1]=='c' and opponent_history[-1]=='b':
                 return 'b' # betray is they were severely punished last time
+            elif history[-1]=='b' and opponent_history[-1]=='b':
+                return 'b' # betray if punished last time
             else:
                 return 'c' #otherwise collude
-    
-    
-
-
-
-
 
 
 
