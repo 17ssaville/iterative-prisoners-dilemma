@@ -579,6 +579,71 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
                 return 'c' #otherwise collude
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    ######
+    ######
+    #
+    elif player == 21:
+        if getting_team_name:
+            return 'Lulu'
+        else:
+            if len(opponent_history)==0: #It's the first round: betray
+                return 'b'
+            elif opponent_history[-1] == history[-1]: # If you lose the last round switch answers
+                if history[-1] == 'b': # If you betrayed and lost switch to collude
+                    return 'c'
+                elif history[-1] == 'c': # If you colluded and lost switch to betray
+                    return 'b'
+            else:
+                return history[-1]
+
+
+
 
 
 
