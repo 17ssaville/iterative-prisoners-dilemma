@@ -228,14 +228,14 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
     
     elif player == 5:
         if getting_team_name:
-            return'Tyler is the best'
+            return'MurrayRuhmel'
         else:
             if len(opponent_history)==0:
                 return 'c'
             elif opponent_history[0]=='c':
                 return 'b'
             else:
-                return 'b'
+                return 'c'
     
 
 
