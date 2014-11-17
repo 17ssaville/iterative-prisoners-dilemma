@@ -16,7 +16,11 @@ Aggregated results are stored in tournament.txt
 Unpublished work (c)2013 Project Lead The Way
 CSE Project 1.3.5 Collaborating on a Project
 Draft, Do Not Distribute
+<<<<<<< HEAD
 Version 11/14/2014
+=======
+Version 11/14/2014 
+>>>>>>> origin/master
 '''
 
 import random
@@ -276,18 +280,32 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
     #
     elif player == 7:
         if getting_team_name:
-            return 'loyal vengeful'
+            #if there was a previous round just like 
+            return 'loyal vengeful with permanent second impression'
         else:
             # use history, opponent_history, score, opponent_score
-            # to compute your strategy
+            # to compute your strategy      
             if len(opponent_history)==0: #It's the first round: collude
                 return 'c'
-            elif history[-1]=='c' and opponent_history[-1]=='b':
-                return 'b' # betray is they were sucker last time
             else:
-                return 'c' #otherwise collude
-
-
+                # if there was a previous round just like the last one,
+                # do whatever they did in the round that followed it
+                recent_round_opponent = opponent_history[-1]
+                recent_round_me = history[-1]
+                            
+                #go through rounds before that one
+                for round in range(len(history)-1):
+                    prior_round_opponent = opponent_history[round]
+                    prior_round_me = history[round]
+                    #if one matches
+                    if (prior_round_me == recent_round_me) and \
+                            (prior_round_opponent == recent_round_opponent):
+                        return opponent_history[round]
+                # no match found
+                if history[-1]=='c' and opponent_history[-1]=='b':
+                    return 'b' # betray is they were severely punished last time
+                else:
+                    return 'c' #otherwise collude
 
 
 
@@ -394,7 +412,7 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
     #
     elif player == 11:
         if getting_team_name:
-            return 'loyal vengeful'
+            return 'The Avenger'
         else:
             # use history, opponent_history, score, opponent_score
             # to compute your strategy
@@ -402,6 +420,8 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
                 return 'c'
             elif history[-1]=='c' and opponent_history[-1]=='b':
                 return 'b' # betray is they were severely punished last time
+            elif history[-1]=='b' and opponent_history[-1]=='b':
+                return 'b' # betray even if they were punished last time
             else:
                 return 'c' #otherwise collude
 
@@ -566,27 +586,28 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
 
 
 
+
+
+
+
+
     ######
     ######
     #
-    elif player == 19:
+    elif player == 11:
         if getting_team_name:
-            return 'loyal vengeful'
+            return 'The Avenger'
         else:
+            # use history, opponent_history, score, opponent_score
+            # to compute your strategy
             if len(opponent_history)==0: #It's the first round: collude
                 return 'c'
             elif history[-1]=='c' and opponent_history[-1]=='b':
                 return 'b' # betray is they were severely punished last time
+            elif history[-1]=='b' and opponent_history[-1]=='b':
+                return 'b' # betray even if they were punished last time
             else:
                 return 'c' #otherwise collude
-    
-    
-
-
-
-
-
-
 
 def play_tournament(num_players):
     #create a list of zeros, one per player
